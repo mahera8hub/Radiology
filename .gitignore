@@ -36,3 +36,11 @@ __pycache__/
 *.keras
 *.ckpt
 .DS_Store
+*.rar
+*.csv
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore node modules
+node_modules/
