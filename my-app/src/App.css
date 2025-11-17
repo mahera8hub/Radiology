@@ -1,0 +1,232 @@
+/* General Page Styling */
+.homepage {
+  font-family: "Poppins", sans-serif;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 8%;
+  background: linear-gradient(to right, #f9fafb, #eef2ff);
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #3b82f6;
+}
+
+.cerescan {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+  color: #4b5563;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.upload-btn {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.hero-img img {
+  width: 460px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- WHY CHOOSE CERESCAN SECTION --- */
+.why-section {
+  text-align: center;
+  padding: 5rem 8%;
+  background: #f9fafb;
+}
+
+.why-section h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.cerescan-title {
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+}
+
+.why-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.why-card {
+  background: white;
+  padding: 2.2rem 1.8rem;
+  border-radius: 16px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+}
+
+.why-icon-wrapper {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e7ff, #f0f9ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-icon {
+  font-size: 2rem;
+  color: #3b82f6;
+}
+
+.why-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.why-card p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+/* Tumor Section */
+.tumor-section {
+  text-align: center;
+  padding: 5rem 8%;
+  background: #f9fafb;
+}
+
+.tumor-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tumor-section p {
+  color: #6b7280;
+  margin-bottom: 2.5rem;
+}
+
+.tumor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tumor-card {
+  background: white;
+  border-radius: 16px;
+  width: 270px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tumor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.tumor-icon {
+  font-size: 2.2rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 5rem 8%;
+  background: linear-gradient(to right, #eef2ff, #f5f3ff);
+}
+
+.cta-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.cta-section p {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.cta-btn {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.cta-icon {
+  font-size: 1.2rem;
+}
