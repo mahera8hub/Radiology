@@ -111,6 +111,7 @@ CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
 @api_view(['POST'])
 def predict_tumor(request):
+    import tensorflow as tf
     file = request.FILES.get('file')
     if not file:
         return JsonResponse({'error': 'No file uploaded'}, status=400)
