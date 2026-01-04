@@ -1,49 +1,4 @@
 
-# # from django.http import JsonResponse
-# # from rest_framework.decorators import api_view
-# # import tensorflow as tf
-# # from tensorflow.keras.preprocessing import image
-# # import numpy as np
-# # import os
-
-# # # Model load (only once)
-# # MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'model', 'efficientnet_finetuned_brain_tumor.keras')
-# # model = tf.keras.models.load_model(MODEL_PATH)
-
-# # # Tumhare trained model ke labels
-# # CLASS_NAMES = ["Glioma", "Meningioma", "Pituitary", "No Tumor"]
-
-# # @api_view(['POST'])
-# # def predict_tumor(request):
-# #     file = request.FILES.get('file')
-# #     if not file:
-# #         return JsonResponse({'error': 'No file uploaded'}, status=400)
-
-# #     temp_path = f"temp/{file.name}"
-# #     os.makedirs("temp", exist_ok=True)
-# #     with open(temp_path, 'wb+') as f:
-# #         for chunk in file.chunks():
-# #             f.write(chunk)
-
-# #     # Image preprocessing
-# #     img = image.load_img(temp_path, target_size=(224, 224))
-# #     img_array = image.img_to_array(img)
-# #     img_array = np.expand_dims(img_array, axis=0) / 255.0
-
-# #     prediction = model.predict(img_array)
-# #     predicted_class = CLASS_NAMES[np.argmax(prediction)]
-# #     confidence = float(np.max(prediction))
-
-# #     return JsonResponse({
-# #         'predicted_class': predicted_class,
-# #         'confidence': confidence
-# #     })
-
-
-
-
-
-
 
 # from django.http import JsonResponse
 # from rest_framework.decorators import api_view
@@ -53,32 +8,37 @@
 # import numpy as np
 # import os
 
+# # Base directory
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# # Model load (only once)
-# MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'model', 'efficientnet_finetuned_brain_tumor.keras')
+# # Load model once
+# MODEL_PATH = os.path.join(BASE_DIR, 'model', 'efficientnet_finetuned_brain_tumor.keras')
 # model = tf.keras.models.load_model(MODEL_PATH)
 
-# # Model labels (must match training)
+# # Class labels (must match training)
 # CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
 # @api_view(['POST'])
 # def predict_tumor(request):
+#     import tensorflow as tf
 #     file = request.FILES.get('file')
 #     if not file:
 #         return JsonResponse({'error': 'No file uploaded'}, status=400)
 
-#     # Save temporarily
-#     temp_path = f"temp/{file.name}"
-#     os.makedirs("temp", exist_ok=True)
+#     # Temp directory
+#     temp_dir = os.path.join(BASE_DIR, 'temp')
+#     os.makedirs(temp_dir, exist_ok=True)
+#     temp_path = os.path.join(temp_dir, file.name)
+
 #     with open(temp_path, 'wb+') as f:
 #         for chunk in file.chunks():
 #             f.write(chunk)
 
-#     # Correct preprocessing for EfficientNet
+#     # Preprocess image
 #     img = image.load_img(temp_path, target_size=(224, 224))
 #     img_array = image.img_to_array(img)
 #     img_array = np.expand_dims(img_array, axis=0)
-#     img_array = preprocess_input(img_array)  # ✅ Use EfficientNet preprocessing
+#     img_array = preprocess_input(img_array)
 
 #     # Predict
 #     prediction = model.predict(img_array)
@@ -89,6 +49,7 @@
 #         'predicted_class': predicted_class,
 #         'confidence': confidence
 #     })
+
 
 
 from django.http import JsonResponse
@@ -102,16 +63,24 @@ import os
 # Base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Load model once
+# Model path
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'efficientnet_finetuned_brain_tumor.keras')
-model = tf.keras.models.load_model(MODEL_PATH)
 
-# Class labels (must match training)
+# Class labels
 CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
+
+# Lazy load model
+model = None  # initially None
+
+def get_model():
+    global model
+    if model is None:
+        # Load model only once
+        model = tf.keras.models.load_model(MODEL_PATH)
+    return model
 
 @api_view(['POST'])
 def predict_tumor(request):
-    import tensorflow as tf
     file = request.FILES.get('file')
     if not file:
         return JsonResponse({'error': 'No file uploaded'}, status=400)
@@ -132,7 +101,8 @@ def predict_tumor(request):
     img_array = preprocess_input(img_array)
 
     # Predict
-    prediction = model.predict(img_array)
+    model_instance = get_model()   # <- use lazy-loaded model
+    prediction = model_instance.predict(img_array)
     predicted_class = CLASS_NAMES[np.argmax(prediction)]
     confidence = float(np.max(prediction))
 
