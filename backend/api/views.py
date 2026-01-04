@@ -110,3 +110,8 @@ def predict_tumor(request):
         'predicted_class': predicted_class,
         'confidence': confidence
     })
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Radiology Brain Tumor Detection API is running.")
