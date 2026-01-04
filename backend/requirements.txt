@@ -7,3 +7,4 @@ packaging==25.0
 sqlparse==0.5.5
 typing_extensions==4.15.0
 tzdata==2025.3
+tensorflow==2.20.0   
