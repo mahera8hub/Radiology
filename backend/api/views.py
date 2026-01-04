@@ -69,9 +69,9 @@ model = None
 def get_model():
     global model
     if model is None:
-        import tensorflow as tf   # ✅ LAZY IMPORT
         model = tf.keras.models.load_model(MODEL_PATH)
     return model
+
 
 
 @api_view(['POST'])
