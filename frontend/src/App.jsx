@@ -15,15 +15,27 @@ import DoctorSignup from "./pages/Signup";
 
 import Profile from "./pages/Profile";
 import PatientHistory from "./pages/PatientHistory";
+import logo from './assets/logo.jpg';
+import { Box } from "@mui/material";
+
+
+
 
 import "./App.css";
 
 function App() {
   return (
+<>
+<Box component="img" src={logo} alt="Logo" sx={{ height: 50 }} />
     <Router>
        <Navbar/>
       <Routes>
-       
+
+
+
+
+
+
         {/* Route for HomePage */}
          <Route path="/" element={<HomePage />} />
          {/* <Route path="/upload" element={<Upload />} /> */}
@@ -58,6 +70,7 @@ function App() {
 
       <Footer />
     </Router>
+    </>
   );
 }
 
