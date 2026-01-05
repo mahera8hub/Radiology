@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+Brain Tumor Classification (Glioma | Meningioma | Pituitary | No Tumor)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack MRI tumor classification app powered by EfficientNet. Frontend uses React + MUI + Tailwind, backend uses Django + SQLite, and the ML model is trained on a Kaggle dataset in Google Colab.
 
-## Available Scripts
+🚀 Features
 
-In the project directory, you can run:
+Classifies 4 tumor types: Glioma, Meningioma, Pituitary, No Tumor
 
-### `npm start`
+EfficientNet model trained in Google Colab
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Achieved 87.9% accuracy
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Responsive UI for MRI upload
 
-### `npm test`
+Django REST API for predictions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Prediction confidence included
 
-### `npm run build`
+🧠 Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Frontend: React, MUI, Tailwind, Axios Backend: Django, Django REST Framework, SQLite ML: EfficientNet, TensorFlow/Keras, Kaggle MRI dataset
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+📂 Project Structure /frontend → React UI /backend → Django API + ML model /model → Saved EfficientNet model db.sqlite3 → SQLite database
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+⚙️ Setup Backend (Django) cd backend pip install -r requirements.txt python manage.py migrate python manage.py runserver
 
-### `npm run eject`
+Frontend (React) cd frontend npm install npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🔗 API Endpoint
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+POST /api/predict/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Form-data
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+file:
 
-## Learn More
+Response
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+{ "prediction": "Pituitary", "confidence": 0.88 } ** 📈 Model Details**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+EfficientNet (transfer learning)
 
-### Code Splitting
+Trained in Google Colab (GPU)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Dataset: Kaggle Brain MRI
 
-### Analyzing the Bundle Size
+Classes: Glioma, Meningioma, Pituitary, No Tumor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Final accuracy: 87.9%
 
-### Making a Progressive Web App
+🔮 Future Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Grad-CAM heatmaps
 
-### Advanced Configuration
+Cloud deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Model upgrade to EfficientNet-B3
 
-### Deployment
+📜 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License.
