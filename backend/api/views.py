@@ -71,8 +71,14 @@ MODEL_PATH = os.path.join(
 
 CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
-# ✅ LOAD MODEL ONCE (SERVER START)
-model = tf.keras.models.load_model(MODEL_PATH)
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = tf.keras.models.load_model(MODEL_PATH)
+    return model
+model = get_model()
 
 
 @api_view(['POST'])

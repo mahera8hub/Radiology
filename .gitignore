@@ -31,8 +31,6 @@ __pycache__/
 # Python DB / checkpoints
 *.sqlite3
 *.zip
-*.h5
-*.keras
 *.ckpt
 
 # MacOS
