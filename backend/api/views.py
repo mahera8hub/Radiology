@@ -50,7 +50,6 @@
 #         'confidence': confidence
 #     })
 
-
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 import os
@@ -63,10 +62,11 @@ from PIL import Image
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# ✅ Use .h5 model for TF 2.13 compatibility
 MODEL_PATH = os.path.join(
     BASE_DIR,
     'model',
-    'efficientnet_finetuned_brain_tumor.keras'
+    'efficientnet_finetuned_brain_tumor.h5'
 )
 
 CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
@@ -78,6 +78,8 @@ def get_model():
     if model is None:
         model = tf.keras.models.load_model(MODEL_PATH)
     return model
+
+# Load model once at startup
 model = get_model()
 
 
@@ -89,7 +91,7 @@ def predict_tumor(request):
         return JsonResponse({'error': 'No image uploaded'}, status=400)
 
     try:
-        # ✅ Read image directly from memory
+        # Read image directly from memory
         img = Image.open(BytesIO(file.read())).convert("RGB")
         img = img.resize((224, 224))
 
