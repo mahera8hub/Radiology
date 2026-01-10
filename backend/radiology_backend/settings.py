@@ -6,7 +6,7 @@ Django settings for radiology_backend project.
 from pathlib import Path
 import os
 
-ENABLE_ML = os.getenv("ENABLE_ML", "true") == "true"
+# ENABLE_ML = os.getenv("ENABLE_ML", "true") == "true"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
