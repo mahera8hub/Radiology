@@ -12,3 +12,4 @@ keras==2.13.1
 numpy<2
 Pillow==9.5.0
 h5py==3.15.1
+whitenoise==6.5.0
