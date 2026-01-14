@@ -1,6 +1,7 @@
 // src/pages/Upload.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import api from "../api/axios";
 import { motion } from "framer-motion";
 import {
   Box,
@@ -59,7 +60,8 @@ const GradientButton = styled(Button)({
 });
 
 const HISTORY_KEY = "mri_analyzer_history_v1";
-const PREDICT_ENDPOINT = "http://127.0.0.1:8000/api/predict/";
+
+const PREDICT_ENDPOINT = "/api/predict/";
 
 const onlyLetters = (v) => /^[a-zA-Z\s]*$/.test(v);
 const onlyNumbers = (v) => /^[0-9]*$/.test(v);
@@ -187,7 +189,7 @@ const resetForm = () => {
     setLoading(true);
     setResult(null);
     try {
-      const res = await axios.post(PREDICT_ENDPOINT, formData, {
+      const res = await api.post(PREDICT_ENDPOINT, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import api from "../api/axios";
 import { motion } from "framer-motion";
 import {
   Box,
@@ -36,7 +38,8 @@ const GradientButton = styled(Button)({
   },
 });
 
-const SIGNUP_ENDPOINT = "http://127.0.0.1:8000/api/doctor/signup/";
+
+const SIGNUP_ENDPOINT = "/api/doctor/signup/";
 
 export default function DoctorSignup() {
   const navigate = useNavigate();
@@ -86,7 +89,7 @@ const handleSignup = async () => {
   };
 
   try {
-    const res = await axios.post(SIGNUP_ENDPOINT, payload, {
+    const res = await api.post(SIGNUP_ENDPOINT, payload, {
       headers: {
         "Content-Type": "application/json", // ✅ Important!
       },

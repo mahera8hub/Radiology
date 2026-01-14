@@ -15,11 +15,12 @@ import {
 } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../api/axios";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-const LOGIN_ENDPOINT = "http://127.0.0.1:8000/api/doctor/login/";
+const LOGIN_ENDPOINT = "/api/doctor/login/";
 
 const DoctorLogin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -38,7 +39,7 @@ const DoctorLogin = () => {
     setError("");
 
     try {
-      const res = await axios.post(LOGIN_ENDPOINT, formData);
+      const res = await api.post(LOGIN_ENDPOINT, formData);
       localStorage.setItem("doctor", JSON.stringify(res.data.doctor));
       window.dispatchEvent(new Event("doctorLogin"));
       navigate("/upload"); // login ke baad upload page

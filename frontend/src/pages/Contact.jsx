@@ -6,6 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
+import api from "../api/axios";
 
 function Contact() {
   // ✅ form state
@@ -28,7 +29,7 @@ function Contact() {
     setLoading(true);
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/contact/submit/", formData);
+      await api.post("/api/contact/submit/", formData);
       alert("Message sent successfully!");
 
       // reset form

@@ -9,6 +9,7 @@ import {
   CircularProgress 
 } from "@mui/material";
 import axios from "axios";
+import api from "../api/axios";
 
 export default function PatientHistory() {
   // Read doctor from localStorage only once
@@ -27,7 +28,7 @@ export default function PatientHistory() {
       setLoading(true);
       setError("");
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/doctor/${doctor.id}/history/`);
+        const res = await api.get(`/api/doctor/${doctor.id}/history/`);
         if (mounted) {
           setRecords(res.data.records || res.data || []);
           setFetched(true); // mark as fetched
