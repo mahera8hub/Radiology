@@ -22,10 +22,11 @@ packaging==25.0
 sqlparse==0.5.5
 typing-extensions>=4.5.0,<4.6.0
 tzdata==2025.3
-tensorflow==2.10.0
-keras==2.10.0
+# tensorflow==2.10.0
+# keras==2.10.0
 numpy==1.23.5
 protobuf<4
-h5py==3.8.0
+# h5py==3.8.0
 Pillow==9.5.0
 whitenoise==6.5.0
+requests
