@@ -5,7 +5,7 @@ import { Box, Grid, Typography, TextField, Button, Paper, Link, Stack } from "@m
 import EmailIcon from "@mui/icons-material/Email";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import SendIcon from "@mui/icons-material/Send";
-import axios from "axios";
+
 import api from "../api/axios";
 
 function Contact() {

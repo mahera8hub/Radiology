@@ -8,7 +8,7 @@ import {
   ListItem, 
   CircularProgress 
 } from "@mui/material";
-import axios from "axios";
+
 import api from "../api/axios";
 
 export default function PatientHistory() {
