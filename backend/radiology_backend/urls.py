@@ -17,9 +17,13 @@
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
 
+def health(request):
+    return JsonResponse({"status": "Backend alive"})
 
 urlpatterns = [
+    path('', health),  # 👈 ROOT health check
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path("api/doctor/", include("doctor.urls")),
