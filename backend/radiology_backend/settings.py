@@ -99,9 +99,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings for React frontend
+CORS_ALLOW_ALL_ORIGINS = False
+
 CORS_ALLOWED_ORIGINS = [
-    "https://radiology-gugj9ecyy-maheras-projects.vercel.app/",
+    "https://radiology-two.vercel.app",
+    "https://radiology-git-master-maheras-projects.vercel.app",
+    "https://radiology-pn1ipr94s-maheras-projects.vercel.app",
+    "https://radiology-gugj9ecyy-maheras-projects.vercel.app",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://radiology-two.vercel.app",
+    "https://radiology-git-master-maheras-projects.vercel.app",
+    "https://radiology-pn1ipr94s-maheras-projects.vercel.app",
+    "https://radiology-gugj9ecyy-maheras-projects.vercel.app",
+]
+
 CORS_ALLOW_HEADERS = [
     "authorization",
     "content-type",
@@ -116,7 +130,7 @@ CORS_ALLOW_METHODS = [
     "OPTIONS",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # allows all origins for local development
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_ALL_ORIGINS = True  # allows all origins for local development
+# CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'doctor.Doctor'
