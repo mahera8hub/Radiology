@@ -99,6 +99,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings for React frontend
+CORS_ALLOWED_ORIGINS = [
+    "https://your-frontend.vercel.app",
+]
+
 CORS_ALLOW_ALL_ORIGINS = True  # allows all origins for local development
 CORS_ALLOW_CREDENTIALS = True
 

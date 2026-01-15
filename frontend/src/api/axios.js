@@ -1,9 +1,13 @@
 import axios from "axios";
 
-console.log("ENV:", process.env.REACT_APP_API_BASE_URL);
+const BASE_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://radiology-4aa0.onrender.com"; // hard fallback
+
+console.log("API BASE URL:", BASE_URL);
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
