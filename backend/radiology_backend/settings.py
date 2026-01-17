@@ -41,13 +41,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # must be first
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'radiology_backend.urls'
@@ -121,12 +121,12 @@ SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "None"
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://radiology-two.vercel.app",
-    "https://radiology-git-master-maheras-projects.vercel.app",
-    "https://radiology-pn1ipr94s-maheras-projects.vercel.app",
-    "https://radiology-gugj9ecyy-maheras-projects.vercel.app",
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://radiology-two.vercel.app",
+#     "https://radiology-git-master-maheras-projects.vercel.app",
+#     "https://radiology-pn1ipr94s-maheras-projects.vercel.app",
+#     "https://radiology-gugj9ecyy-maheras-projects.vercel.app",
+# ]
 
 CORS_ALLOW_HEADERS = [
     "authorization",
