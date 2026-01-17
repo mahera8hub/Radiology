@@ -30,3 +30,5 @@ protobuf<4
 Pillow==9.5.0
 whitenoise==6.5.0
 requests
+dj-database-url
+psycopg2-binary

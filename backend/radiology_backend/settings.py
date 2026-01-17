@@ -5,7 +5,7 @@ Django settings for radiology_backend project.
 
 from pathlib import Path
 import os
-
+import dj_database_url
 # ENABLE_ML = os.getenv("ENABLE_ML", "true") == "true"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -70,12 +70,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'radiology_backend.wsgi.application'
 
 # Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -100,15 +110,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings for React frontend
 CORS_ALLOW_ALL_ORIGINS = False
-
-CORS_ALLOWED_ORIGINS = [
-    "https://radiology-two.vercel.app",
-    "https://radiology-git-master-maheras-projects.vercel.app",
-    "https://radiology-pn1ipr94s-maheras-projects.vercel.app",
-    "https://radiology-gugj9ecyy-maheras-projects.vercel.app",
-]
-
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "None"
+
+
 CSRF_TRUSTED_ORIGINS = [
     "https://radiology-two.vercel.app",
     "https://radiology-git-master-maheras-projects.vercel.app",
