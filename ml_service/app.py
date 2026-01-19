@@ -10,12 +10,16 @@ app = FastAPI()
 
 CLASS_NAMES = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
-# Load model ONCE when service starts
+model = None  # 👈 important
 
-model = tf.keras.models.load_model(
-    "brain_tumor_saved_model",
-    compile=False
-)
+def get_model():
+    global model
+    if model is None:
+        model = tf.keras.models.load_model(
+            "brain_tumor_saved_model",
+            compile=False
+        )
+    return model
 
 def preprocess(img_bytes):
     img = Image.open(BytesIO(img_bytes)).convert("RGB")
@@ -26,13 +30,15 @@ def preprocess(img_bytes):
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
+    m = get_model()   # 👈 load only when first request hits
     img = preprocess(await file.read())
-    preds = model.predict(img)
+    preds = m.predict(img)
 
     return {
         "predicted_class": CLASS_NAMES[int(np.argmax(preds))],
         "confidence": float(np.max(preds))
     }
+
 @app.get("/")
 def health():
     return {"status": "ML service alive"}
