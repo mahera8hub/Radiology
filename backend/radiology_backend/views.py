@@ -26,7 +26,7 @@
 from django.http import JsonResponse
 import requests
 
-ML_SERVICE_URL = "https://radiology-2.onrender.com/health"
+ML_SERVICE_URL = "https://radiology-2.onrender.com/"
 
 def predict(request):
     try:

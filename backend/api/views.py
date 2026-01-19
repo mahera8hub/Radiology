@@ -47,32 +47,100 @@
 #         'confidence': confidence
 #     })
 
+# from django.http import JsonResponse
+# from rest_framework.decorators import api_view
+# import requests
+
+# ML_SERVICE_URL = "https://radiology-2.onrender.com/predict"  
+# # later this will be your deployed ML URL
+
+# @api_view(['POST'])
+# def predict_tumor(request):
+#     file = request.FILES.get("file")
+
+#     if not file:
+#         return JsonResponse({"error": "No file uploaded"}, status=400)
+
+#     try:
+#         response = requests.post(
+#             ML_SERVICE_URL,
+#             files={"file": (file.name, file.read(), file.content_type)},
+#             timeout=60
+#         )
+
+#         return JsonResponse(response.json(), status=response.status_code)
+        
+
+#     except requests.exceptions.RequestException as e:
+#         return JsonResponse(
+#             {"error": "ML service unavailable", "details": str(e)},
+#             status=500
+#         )
+
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 import requests
 
-ML_SERVICE_URL = "https://radiology-2.onrender.com/predict"  
-# later this will be your deployed ML URL
+# ML service predict endpoint
+ML_SERVICE_URL = "https://radiology-2.onrender.com/predict"
 
 @api_view(['POST'])
 def predict_tumor(request):
     file = request.FILES.get("file")
 
     if not file:
-        return JsonResponse({"error": "No file uploaded"}, status=400)
+        return JsonResponse(
+            {"error": "No file uploaded"},
+            status=400
+        )
 
     try:
         response = requests.post(
             ML_SERVICE_URL,
-            files={"file": (file.name, file.read(), file.content_type)},
+            files={
+                "file": (
+                    file.name,
+                    file.read(),
+                    file.content_type or "application/octet-stream"
+                )
+            },
             timeout=60
         )
 
-        return JsonResponse(response.json(), status=response.status_code)
+        # Raise exception for 4xx / 5xx from ML service
+        response.raise_for_status()
+
+        # Ensure ML response is JSON
+        content_type = response.headers.get("content-type", "")
+        if not content_type.startswith("application/json"):
+            return JsonResponse(
+                {
+                    "error": "Invalid response from ML service",
+                    "raw_response": response.text[:500]
+                },
+                status=502
+            )
+
+        return JsonResponse(response.json(), status=200)
+
+    except requests.exceptions.Timeout:
+        return JsonResponse(
+            {"error": "ML service timeout"},
+            status=504
+        )
 
     except requests.exceptions.RequestException as e:
         return JsonResponse(
-            {"error": "ML service unavailable", "details": str(e)},
-            status=500
+            {
+                "error": "ML service unavailable",
+                "details": str(e)
+            },
+            status=503
         )
 
+    except ValueError:
+        # JSON decoding error
+        return JsonResponse(
+            {"error": "Invalid JSON received from ML service"},
+            status=502
+        )
