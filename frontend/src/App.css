@@ -42,236 +42,216 @@
 
 
 
-
+/* 
 /* General Page Styling */
-.homepage {
-  font-family: "Poppins", sans-serif;
-  color: #1f2937;
-  overflow-x: hidden;
+ .homepage{
+  width:100%;
+  overflow-x:hidden;
 }
 
-/* Hero Section */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8rem 8%;
-  background: linear-gradient(to right, #f9fafb, #eef2ff);
+/* HERO */
+
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:80px 10%;
+  gap:40px;
 }
 
-.hero-text {
-  max-width: 50%;
+.hero-text{
+  flex:1;
 }
 
-.hero-text h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
+.hero-text h1{
+  font-size:42px;
+  font-weight:700;
+  line-height:1.2;
 }
 
-.highlight {
-  color: #3b82f6;
+.hero-text p{
+  margin-top:15px;
+  font-size:18px;
+  color:#555;
 }
 
-.cerescan {
-  background: linear-gradient(to right, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero-img{
+  flex:1;
+  text-align:center;
 }
 
-.hero-text p {
-  color: #4b5563;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+.hero-img img{
+  width:100%;
+  max-width:500px;
+  border-radius:12px;
 }
 
-.upload-btn {
-  background: linear-gradient(to right, #3b82f6, #8b5cf6);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
+/* BUTTON */
+
+.upload-btn{
+  margin-top:25px;
+  padding:14px 26px;
+  font-size:16px;
+  border-radius:25px;
+  border:none;
+  background:linear-gradient(90deg,#3B82F6,#8B5CF6);
+  color:white;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
 }
 
-.upload-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+/* WHY SECTION */
+
+.why-section{
+  padding:80px 10%;
+  text-align:center;
 }
 
-.hero-img img {
-  width: 460px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.subtitle{
+  margin-top:10px;
+  color:#666;
 }
 
-/* --- WHY CHOOSE CERESCAN SECTION --- */
-.why-section {
-  text-align: center;
-  padding: 5rem 8%;
-  background: #f9fafb;
+.why-grid{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
 }
 
-.why-section h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
+.why-card{
+  padding:30px;
+  border-radius:12px;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
 }
 
-.cerescan-title {
-  background: linear-gradient(90deg, #3b82f6, #6366f1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.why-icon-wrapper{
+  font-size:35px;
+  color:#3B82F6;
+  margin-bottom:10px;
 }
 
-.subtitle {
-  color: #6b7280;
-  font-size: 1.05rem;
-  margin-bottom: 3rem;
+/* TUMOR */
+
+.tumor-section{
+  padding:80px 10%;
+  text-align:center;
 }
 
-.why-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+.tumor-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
 }
 
-.why-card {
-  background: white;
-  padding: 2.2rem 1.8rem;
-  border-radius: 16px;
-  width: 280px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.tumor-card{
+  padding:25px;
+  border-radius:12px;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
 }
 
-.why-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+.tumor-icon{
+  font-size:35px;
+  color:#6366F1;
+  margin-bottom:10px;
 }
 
-.why-icon-wrapper {
-  width: 65px;
-  height: 65px;
-  margin: 0 auto 1.2rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e0e7ff, #f0f9ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* CTA */
+
+.cta-section{
+  padding:80px 10%;
+  text-align:center;
 }
 
-.why-icon {
-  font-size: 2rem;
-  color: #3b82f6;
-}
-
-.why-card h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
-}
-
-.why-card p {
-  color: #6b7280;
-  font-size: 0.95rem;
-  line-height: 1.6;
+.cta-btn{
+  margin-top:20px;
+  padding:14px 26px;
+  font-size:16px;
+  border-radius:25px;
+  border:none;
+  background:linear-gradient(90deg,#3B82F6,#8B5CF6);
+  color:white;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
 }
 
 
-/* Tumor Section */
-.tumor-section {
-  text-align: center;
-  padding: 4rem 8%;
-  background: #f9fafb;
+/* TABLET */
+
+@media (max-width:1024px){
+
+.hero{
+flex-direction:column;
+text-align:center;
 }
 
-.tumor-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+.hero-text h1{
+font-size:36px;
 }
 
-.tumor-section p {
-  color: #6b7280;
-  margin-bottom: 2.5rem;
+.why-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-.tumor-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+.tumor-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-.tumor-card {
-  background: white;
-  border-radius: 16px;
-  width: 270px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
 }
 
-.tumor-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+.hero{
+padding:60px 20px;
 }
 
-.tumor-icon {
-  font-size: 2.2rem;
-  color: #3b82f6;
-  margin-bottom: 1rem;
+.hero-text h1{
+font-size:30px;
 }
 
-/* CTA Section */
-.cta-section {
-  text-align: center;
-  padding: 5rem 8%;
-  background: linear-gradient(to right, #eef2ff, #f5f3ff);
+.hero-text p{
+font-size:16px;
 }
 
-.cta-section h2 {
-  font-size: 2.4rem;
-  margin-bottom: 0.5rem;
-  color: #111827;
+.why-section,
+.tumor-section,
+.cta-section{
+padding:60px 20px;
 }
 
-.cta-section p {
-  color: #6b7280;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+.why-grid{
+grid-template-columns:1fr;
 }
 
-.cta-btn {
-  background: linear-gradient(to right, #3b82f6, #8b5cf6);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 0.9rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: all 0.3s ease;
+.tumor-grid{
+grid-template-columns:1fr;
 }
 
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
-.cta-icon {
-  font-size: 1.2rem;
+
+/* SMALL MOBILE */
+
+@media (max-width:480px){
+
+.hero-text h1{
+font-size:26px;
+}
+
+.upload-btn,
+.cta-btn{
+width:100%;
+justify-content:center;
+}
+
 }

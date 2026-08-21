@@ -1,8 +1,15 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from drf_spectacular.utils import extend_schema
 from .serializers import ContactMessageSerializer
 
+
+@extend_schema(
+    request=ContactMessageSerializer,
+    responses={201: ContactMessageSerializer},
+    description='Accept POST request from frontend and save contact message',
+)
 @api_view(['POST'])
 def submit_contact(request):
     """

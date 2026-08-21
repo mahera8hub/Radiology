@@ -25,51 +25,41 @@ import "./App.css";
 
 function App() {
   return (
-<>
-<Box component="img" src={logo} alt="Logo" sx={{ height: 50 }} />
-    <Router>
-       <Navbar/>
-      <Routes>
-
-
-
-
-
-
+    <>
+      <Box component="img" src={logo} alt="Logo" sx={{ height: 50 }} />
+      <Router>
+        <Navbar />
+        <Routes>
         {/* Route for HomePage */}
-         <Route path="/" element={<HomePage />} />
-         {/* <Route path="/upload" element={<Upload />} /> */}
-         <Route path="/contact" element={<Contact />} />
-         <Route path="/about" element={<AboutPage />} />
-         <Route path="/team" element={<Team />} />
-        {/* <Route path="/sign" element={<Signup />} /> */}
-         <Route path="/doctor-login" element={<DoctorLogin />} />
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/upload" element={<Upload />} /> */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/team" element={<Team />} />
+          {/* <Route path="/sign" element={<Signup />} /> */}
+          <Route path="/doctor-login" element={<DoctorLogin />} />
 
-             <Route path="/doctor-signup" element={<DoctorSignup />} />
+          <Route path="/doctor-signup" element={<DoctorSignup />} />
 
-            <Route path="/profile" element={
-  <ProtectedRoute><Profile /></ProtectedRoute>
-} />
-<Route path="/history" element={
-  <PatientHistory/>
-} />
-            
-             {/* 🔐 Protected Route */}
-        <Route
-          path="/upload"
-          element={
-            <ProtectedRoute>
-              <Upload />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+          <Route path="/profile" element={
+            <ProtectedRoute><Profile /></ProtectedRoute>
+          } />
+          <Route path="/history" element={
+            <PatientHistory />
+          } />
 
-
-
-
-      <Footer />
-    </Router>
+          {/* 🔐 Protected Route */}
+          <Route
+            path="/upload"
+            element={
+              <ProtectedRoute>
+                <Upload />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 }

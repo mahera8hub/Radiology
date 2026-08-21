@@ -1,26 +1,12 @@
-# from django.contrib import admin
-# from django.urls import path, include
-# from api.views import home
-
-# urlpatterns = [
-#      path('', home),
-#     path('admin/', admin.site.urls),
-#     path('api/', include('api.urls')),
-#     path("api/doctor/", include("doctor.urls")),
-#     #  path('api/patient/', include('patient.urls')),   # patient app API
-#     path('api/contact/', include('contact.urls')), 
-#     # path("api/doctor/", include("doctor.urls")),
-# ]
-
-
-
-
 from django.contrib import admin
 from django.urls import path, include
 from django.http import JsonResponse
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 
 def health(request):
     return JsonResponse({"status": "Backend alive"})
+
 
 urlpatterns = [
     path('', health),  # 👈 ROOT health check
@@ -28,6 +14,8 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path("api/doctor/", include("doctor.urls")),
     #  path('api/patient/', include('patient.urls')),   # patient app API
-    path('api/contact/', include('contact.urls')), 
-    # path("api/doctor/", include("doctor.urls")),
+    path('api/contact/', include('contact.urls')),
+    # Swagger / OpenAPI docs
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]

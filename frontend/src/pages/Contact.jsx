@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Box, Grid, Typography, TextField, Button, Paper, Link, Stack } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
@@ -9,17 +7,14 @@ import SendIcon from "@mui/icons-material/Send";
 import api from "../api/axios";
 
 function Contact() {
-  // ✅ form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  // ✅ loading state
   const [loading, setLoading] = useState(false);
 
-  // ✅ handle submit
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill all fields");
@@ -31,8 +26,6 @@ function Contact() {
     try {
       await api.post("/api/contact/submit/", formData);
       alert("Message sent successfully!");
-
-      // reset form
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       console.error(err);
@@ -45,10 +38,10 @@ function Contact() {
   return (
     <Box
       sx={{
-        p: 12,
+        px: { xs: 2, sm: 4, md: 8 },
+        py: { xs: 6, md: 10 },
         minHeight: "60vh",
         background: "linear-gradient(135deg, #e3f2fd, #fce4ec)",
-      
       }}
     >
       {/* Heading */}
@@ -60,6 +53,7 @@ function Contact() {
           color: "#0b0c26",
           mb: 1,
           letterSpacing: "1px",
+          fontSize: { xs: "2rem", sm: "2.4rem", md: "3rem" },
         }}
       >
         Contact Us
@@ -68,7 +62,10 @@ function Contact() {
       <Typography
         align="center"
         color="text.secondary"
-        sx={{ mb: 6, fontSize: "1.2rem" }}
+        sx={{
+          mb: { xs: 4, md: 6 },
+          fontSize: { xs: "1rem", md: "1.2rem" },
+        }}
       >
         We'd love to hear from you! Feel free to reach out any time.
       </Typography>
@@ -76,7 +73,7 @@ function Contact() {
       {/* Main Section */}
       <Grid
         container
-        spacing={4}
+        spacing={{ xs: 3, md: 4 }}
         justifyContent="center"
         sx={{ maxWidth: 1100, mx: "auto" }}
       >
@@ -86,7 +83,7 @@ function Contact() {
             elevation={5}
             sx={{
               flex: 1,
-              p: 4,
+              p: { xs: 3, md: 4 },
               borderRadius: "20px",
               background: "rgba(255,255,255,0.6)",
               backdropFilter: "blur(10px)",
@@ -100,8 +97,8 @@ function Contact() {
           >
             <Box
               sx={{
-                width: 60,
-                height: 60,
+                width: { xs: 50, md: 60 },
+                height: { xs: 50, md: 60 },
                 borderRadius: "15px",
                 mb: 2,
                 display: "flex",
@@ -110,18 +107,22 @@ function Contact() {
                 background: "linear-gradient(135deg, #6a85f1, #8ec5fc)",
               }}
             >
-              <ChatBubbleOutlineIcon sx={{ color: "#fff", fontSize: 30 }} />
+              <ChatBubbleOutlineIcon sx={{ color: "#fff", fontSize: { xs: 24, md: 30 } }} />
             </Box>
 
-            <Typography variant="h5" fontWeight="bold" mb={2}>
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              mb={2}
+              sx={{ fontSize: { xs: "1.3rem", md: "1.5rem" } }}
+            >
               Get in Touch
             </Typography>
 
-            <Typography color="text.secondary" mb={3}>
+            <Typography color="text.secondary" mb={3} sx={{ fontSize: { xs: "0.95rem", md: "1rem" } }}>
               We usually respond within 24 hours. Reach us anytime through email.
             </Typography>
 
-            {/* Email Display */}
             <Stack direction="row" spacing={2} alignItems="center">
               <EmailIcon sx={{ fontSize: 30, color: "#3579f6" }} />
               <Box>
@@ -146,14 +147,14 @@ function Contact() {
             elevation={5}
             sx={{
               flex: 1,
-              p: 4,
+              p: { xs: 3, md: 4 },
               borderRadius: "20px",
               background: "rgba(255,255,255,0.7)",
               backdropFilter: "blur(10px)",
               boxShadow: "0px 8px 25px rgba(0,0,0,0.1)",
             }}
           >
-            <Stack spacing={3}>
+            <Stack spacing={{ xs: 2.5, md: 3 }}>
               <TextField
                 label="Your Name"
                 fullWidth
@@ -204,15 +205,14 @@ function Contact() {
                 }}
               />
 
-              {/* Button */}
               <Button
                 variant="contained"
                 size="large"
                 endIcon={<SendIcon />}
-                onClick={handleSubmit} // ✅ attached
+                onClick={handleSubmit}
                 disabled={loading}
                 sx={{
-                  alignSelf: "flex-start",
+                  alignSelf: { xs: "stretch", sm: "flex-start" },
                   px: 4,
                   py: 1.5,
                   borderRadius: "12px",

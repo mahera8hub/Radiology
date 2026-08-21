@@ -15,12 +15,12 @@ import divyanshiImg from "../assets/Divyanshi.jpg";
 import kanishkaImg from "../assets/Kanishka.jpg";
 
 const members = [
-    { name: "Saumya Kushwaha", role: "Backend & Testing", email: "saumyakushwaha1601@gmail.com", linkedin: "https://www.linkedin.com/in/saumya-kushwaha-691457301", github: "https://github.com/saumya-2005", img: saumyaImg },
-    { name: "Anshika Verma", role: "Content & Research", email: "anshikaverma27012@gmail.com", linkedin: "https://www.linkedin.com/in/anshika-42ab42281", github: "https://github.com/anshikaverma-27012-hash", img: anshikaImg },
     { name: "Mahera Kulsoom", role: "Model Training & Documentation", email: "syedmahera8102005@gmail.com", linkedin: "https://www.linkedin.com/in/mahera-kulsoom-43b051291/", github: "https://github.com/mahera8hub", img: maheraImg },
+    { name: "Saumya Kushwaha", role: "Backend & Testing", email: "saumyakushwaha1601@gmail.com", linkedin: "https://www.linkedin.com/in/saumya-kushwaha-691457301", github: "https://github.com/saumya-2005", img: saumyaImg },
     { name: "Aditi Diwaker", role: "Research & Frontend", email: "staraditi719@gmail.com", linkedin: "https://www.linkedin.com/in/aditi-diwaker-38413a2a6/", github: "https://github.com/staraditi719-svg", img: aditiImg },
     { name: "Divyanshi Shukla", role: "Research & Frontend", email: "divyanshishukla029@gmail.com", linkedin: "https://www.linkedin.com/in/divyanshi-shukla-202b502b7", github: "https://github.com/divyanshishukla029-a11y", img: divyanshiImg },
-    { name: "Kanishka Yadav", role: "UI/UX Designer & Frontend", email: "kanishkayadac@gmail.com", linkedin: "https://www.linkedin.com/in/kanishka-yadav-19a818381", github: "https://github.com/kanishka2607", img: kanishkaImg },
+    { name: "Kanishka Yadav", role: "UI/UX Designer & Frontend", email: "yriya0726@gmail.com", linkedin: "https://www.linkedin.com/in/kanishka-yadav-19a818381", github: "https://github.com/kanishka2607", img: kanishkaImg },
+    { name: "Anshika Verma", role: "Content & Research", email: "anshikaverma27012@gmail.com", linkedin: "https://www.linkedin.com/in/anshika-42ab42281", github: "https://github.com/anshikaverma-27012-hash", img: anshikaImg },
 ];
 
 const StyledCard = styled(Card)(() => ({
@@ -88,3 +88,5 @@ export default function TeamPage() {
         </Box>
     );
 }
+
+
