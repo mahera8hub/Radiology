@@ -33,4 +33,4 @@ requests
 dj-database-url
 psycopg2-binary
 drf-spectacular==0.28.0
-drf-spectacular==0.30.0
+
