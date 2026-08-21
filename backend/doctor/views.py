@@ -1,10 +1,17 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, serializers
+from drf_spectacular.utils import extend_schema
 from .serializers import DoctorSerializer
 from django.contrib.auth import authenticate
 
+
+@extend_schema(
+    request=DoctorSerializer,
+    responses={201: DoctorSerializer},
+    description='Register a new doctor account',
+)
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def doctor_signup(request):
@@ -15,6 +22,17 @@ def doctor_signup(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class DoctorLoginSerializer(serializers.Serializer):
+    """Used only so Swagger/drf-spectacular can document the expected
+    request body for doctor_login, which reads request.data manually."""
+    email = serializers.EmailField()
+    password = serializers.CharField(style={'input_type': 'password'})
+
+
+@extend_schema(
+    request=DoctorLoginSerializer,
+    description='Authenticate a doctor with email and password',
+)
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def doctor_login(request):

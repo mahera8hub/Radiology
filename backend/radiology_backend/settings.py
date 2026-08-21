@@ -1,4 +1,6 @@
 
+
+
 """
 Django settings for radiology_backend project.
 """
@@ -19,6 +21,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'corsheaders',  # must be first for CORS
     'rest_framework',
+    'drf_spectacular',
     'api',
     'patient.apps.PatientConfig',
     'doctor.apps.DoctorConfig',
@@ -96,3 +99,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # allows all origins for local development
 CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'doctor.Doctor'
+
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', }
+
+SPECTACULAR_SETTINGS = { 'TITLE': 'Radiology Brain Tumor Detection API', 'DESCRIPTION': 'API for detecting brain tumors (Glioma, Meningioma, Pituitary, No Tumor) from MRI images using EfficientNet.', 'VERSION': '1.0.0', } 

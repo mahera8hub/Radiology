@@ -11,8 +11,9 @@ export default function AboutPage() {
       sx={{
         position: "relative",
         overflow: "hidden",
-        p: 6,
-        pt: "70px"
+        px: { xs: 2, sm: 4, md: 6 },
+        py: { xs: 6, md: 8 },
+        pt: { xs: "90px", md: "70px" },
       }}
     >
       {/* ------------------ BACKGROUND GLOW ------------------ */}
@@ -21,21 +22,22 @@ export default function AboutPage() {
           position: "absolute",
           top: "-150px",
           left: "-150px",
-          width: "350px",
-          height: "350px",
+          width: { xs: "250px", md: "350px" },
+          height: { xs: "250px", md: "350px" },
           background: "rgba(80,150,255,0.35)",
           filter: "blur(120px)",
           borderRadius: "50%",
           zIndex: -1,
         }}
       />
+
       <Box
         sx={{
           position: "absolute",
           bottom: "-150px",
           right: "-150px",
-          width: "350px",
-          height: "350px",
+          width: { xs: "250px", md: "350px" },
+          height: { xs: "250px", md: "350px" },
           background: "rgba(120,80,255,0.35)",
           filter: "blur(120px)",
           borderRadius: "50%",
@@ -44,11 +46,12 @@ export default function AboutPage() {
       />
 
       {/* ------------------ ABOUT HEADING ------------------ */}
-      <Box sx={{ textAlign: "center", mt: 5, mb: 4 }}>
+      <Box sx={{ textAlign: "center", mt: { xs: 3, md: 5 }, mb: { xs: 3, md: 4 } }}>
         <Typography
           variant="h3"
           sx={{
             fontWeight: "bold",
+            fontSize: { xs: "1.9rem", sm: "2.3rem", md: "3rem" },
             background: "linear-gradient(90deg, #3B6CE7, #6F9FFF)",
             WebkitBackgroundClip: "text",
             color: "transparent",
@@ -76,12 +79,12 @@ export default function AboutPage() {
       </Box>
 
       {/* ------------------ MISSION SECTION ------------------ */}
-      <Box sx={{ display: "flex", justifyContent: "center", mb: 6 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", mb: { xs: 4, md: 6 } }}>
         <Box
           sx={{
             maxWidth: "1100px",
             width: "100%",
-            p: 4,
+            p: { xs: 3, md: 4 },
             borderRadius: 4,
             boxShadow: "0 4px 18px rgba(0,0,0,0.08)",
             background: "rgba(255,255,255,0.85)",
@@ -96,6 +99,7 @@ export default function AboutPage() {
             sx={{
               fontWeight: "bold",
               mb: 2,
+              fontSize: { xs: "1.5rem", sm: "1.9rem", md: "2.2rem" },
               background: "linear-gradient(90deg, #3B6CE7, #4989FF)",
               WebkitBackgroundClip: "text",
               color: "transparent",
@@ -108,7 +112,7 @@ export default function AboutPage() {
             variant="body1"
             sx={{
               color: "#555",
-              fontSize: "1.1rem",
+              fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
               lineHeight: 1.7,
               maxWidth: "900px",
               mx: "auto",
@@ -122,10 +126,10 @@ export default function AboutPage() {
         </Box>
       </Box>
 
-      {/* ------------------ 4 FEATURE BOXES ------------------ */}
+      {/* ------------------ FEATURES ------------------ */}
       <Grid
         container
-        spacing={4}
+        spacing={{ xs: 2, md: 4 }}
         sx={{
           maxWidth: "1200px",
           mx: "auto",
@@ -133,7 +137,6 @@ export default function AboutPage() {
           animation: "fadeIn 1.6s ease",
         }}
       >
-        {/* Feature Reusable Box */}
         {[
           {
             icon: <MedicalInformationIcon fontSize="inherit" />,
@@ -160,10 +163,10 @@ export default function AboutPage() {
             bg: "linear-gradient(135deg, #34A6FF, #0084FF)",
           },
         ].map((box, idx) => (
-          <Grid item xs={12} sm={6} key={idx}>
+          <Grid item xs={12} sm={6} md={6} key={idx}>
             <Card
               sx={{
-                p: 3,
+                p: { xs: 2.5, md: 3 },
                 borderRadius: 4,
                 boxShadow: 4,
                 display: "flex",
@@ -178,25 +181,33 @@ export default function AboutPage() {
             >
               <Box
                 sx={{
-                  width: 55,
-                  height: 55,
+                  width: { xs: 45, md: 55 },
+                  height: { xs: 45, md: 55 },
                   borderRadius: 2,
                   background: box.bg,
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   color: "white",
-                  fontSize: "30px",
+                  fontSize: { xs: "24px", md: "30px" },
                 }}
               >
                 {box.icon}
               </Box>
 
               <Box>
-                <Typography variant="h6" fontWeight="bold">
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  sx={{ fontSize: { xs: "1rem", md: "1.15rem" } }}
+                >
                   {box.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ fontSize: { xs: "0.85rem", md: "0.95rem" } }}
+                >
                   {box.desc}
                 </Typography>
               </Box>
@@ -205,18 +216,18 @@ export default function AboutPage() {
         ))}
       </Grid>
 
-      {/* KEYFRAME ANIMATIONS */}
+      {/* ANIMATIONS */}
       <style>
         {`
-          @keyframes fadeIn {  
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
+        @keyframes fadeIn {  
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
 
-          @keyframes underlineAnim {
-            0% { transform: scaleX(0); }
-            100% { transform: scaleX(1); }
-          }
+        @keyframes underlineAnim {
+          0% { transform: scaleX(0); }
+          100% { transform: scaleX(1); }
+        }
         `}
       </style>
     </Box>
