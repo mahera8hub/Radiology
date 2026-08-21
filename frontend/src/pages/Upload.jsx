@@ -1,7 +1,7 @@
 
 // src/pages/Upload.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Box,
@@ -51,8 +51,7 @@ import jsPDF from "jspdf";
 /*  shape here; the Django /api/predict/ view expects exactly this.   */
 /* ------------------------------------------------------------------ */
 const HISTORY_KEY = "mri_analyzer_history_v1";
-const PREDICT_ENDPOINT = "http://127.0.0.1:8000/api/predict/";
-
+const PREDICT_ENDPOINT = "/api/predict/";
 /* ------------------------------------------------------------------ */
 /*  Design tokens — "radiology lightbox" identity.                    */
 /*  Clinical paper on the intake side, a dark DICOM-style viewer on   */
@@ -142,6 +141,9 @@ const SectionLabel = ({ num, children, tone = "light" }) => (
     </Typography>
   </Stack>
 );
+
+const onlyLetters = (v) => /^[a-zA-Z\s]*$/.test(v);
+const onlyNumbers = (v) => /^[0-9]*$/.test(v);
 
 /* ---------------------------- Confirm Dialog ---------------------------- */
 function ConfirmDialog({ open, title, message, onCancel, onConfirm }) {
@@ -414,7 +416,7 @@ export default function Upload() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await axios.post(PREDICT_ENDPOINT, formData, {
+      const res = await api.post(PREDICT_ENDPOINT, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
