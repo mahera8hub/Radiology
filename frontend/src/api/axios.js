@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL =
   process.env.REACT_APP_API_BASE_URL ||
-  "https://radiology-077x.onrender.com"; // hard fallback
+  "https://radiology-qlts.onrender.com"; 
 
 console.log("API BASE URL:", BASE_URL);
 
